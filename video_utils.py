@@ -2,14 +2,6 @@ import tensorflow as tf
 import numpy as np
 
 
-def randomize(x, y):
-    """Randomize the order of data samples and their corresponding labels"""
-    permutation = np.random.permutation(y.shape[0])
-    shuffled_x = x[permutation, :, :, :]
-    shuffled_y = y[permutation]
-    return shuffled_x, shuffled_y
-
-
 def reformat(x, y, img_size, num_channel, num_class):
     """Reformat the data to the format acceptable for 3d cnn"""
     dataset = x.reshape((-1, img_size, img_size, img_size, num_channel)).astype(np.float32)
